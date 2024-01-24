@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Click xG Model</title>
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='clipboard.png')}}">
+    <link rel="stylesheet" href='{{url_for("static", filename="xG.css")}}'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+</head>
+<body>
+    <svg id="pitch-img" class="svg-aside">
+        <!-- The pitch -->
+        <rect class="pitch-svg" width="390" height="280" x=5 y=5></rect>
+         <!-- Penalty area -->
+        <circle class="pitch-svg" cx=190 cy=79.4 r=50></circle>
+        <rect class="pitch-svg" width="219" height="92.5" x=85 y=5></rect>
+        <rect class="pitch-svg" width="100" height="22.5" x=140 y=5></rect>
+        <circle class="pitch-svg" cx=190 cy=54 r=2></circle>
+        <!-- Centre circle -->
+        <circle class="pitch-svg" cx=190 cy=285 r=50 style="fill-opacity:0;"></circle>
+        <circle class="pitch-svg" cx=190 cy=285 r=2 style="fill-opacity:0;"></circle>
+        <!-- Goal -->
+        <rect class="pitch-svg" width="45" height="5" x=167.5 y=0 style="fill:lightgray;fill-opacity:0.5;"></rect>
+    </svg><br><br>
+    <!-- xG label -->
+    <div class="container">
+        <h4><strong>Lengkapi informasi di bawah sebelum klik di lokasi Shot untuk hasil terbaik</strong></h4>
+        <text>Posisi Pemain :</text>
+        <select name="player-position" id="player">
+            <option value="fw">Forward</option>
+            <option value="mf">Midfielder</option>
+            <option value="df">Defender</option>
+        </select><br>
+        <text>Teknik Tendangan :</text>
+        <select name="shot-technique" id="technique">
+            <option value="shot">Shot</option>
+            <option value="volley">Volley</option>
+            <option value="header">Header</option>
+            <option value="tap-in">Tap-in</option>
+        </select><br>
+        <text>Jumlah pemain yang menghadang :</text><input id="player_in_the_way"type="number" min="0" max="22" required><br>
+        <text>Situasi :</text>
+        <select name="situasi" id="situation">
+            <option value="open-play">Open play</option>
+            <option value="free-kick">Free kick</option>
+            <option value="corner-kick">Corner kick</option>
+            <option value="penalty">Penalty</option>
+            <option value="fast-break">Counter attack</option>
+            <option value="throw-in">Throw in</option>
+        </select><br>
+        <text>Jenis Umpan :</text>
+        <select name="pass-type" id="pass">
+            <option value="pass">Pass</option>
+            <option value="cross">Cross</option>
+            <option value="through-pass">Through Pass</option>
+            <option value="penalty">Penalty</option>
+            <option value="free-kick">Free kick</option>
+            <option value="loose-ball">Loose ball</option>
+            <option value="clearance">Clearance</option>
+            <option value="low-cross">Low cross</option>
+            <option value="lay-off">Lay off</option>
+            <option value="long-pass">Long pass</option>
+            <option value="dribble">Dribble</option>
+        </select><br>
+        <text>Bagian Tubuh untuk menendang :</text>
+        <select name="body-part" id="body-part">
+            <option value="strong_foot">Stronger Foot</option>
+            <option value="weaker_foot">Weaker Foot</option>
+            <option value="head">Header</option>
+            <option value="other_part">Other Part</option>
+        </select><br>
+        <text>On Target :</text>
+        <select name="on-target" id="on-target">
+            <option value=1>Ya</option>
+            <option value=0>Tidak</option>
+        </select><br>
+        <text class="xG-text" id="coordinate-text"></text><br>
+        <text class="xG-text" id="xG"></text><br><br>
+    </div>
+    <br><br><br>
+    <table class="table" id="table">
+        <tr class="columns">
+            <th>player_pos</th>
+            <th>distance_to_l</th>
+            <th>distance_to_r</th>
+            <th>angle</th>
+            <th>shot_technique</th>
+            <th>player_in_the_way</th>
+            <th>pass_type</th>
+            <th>situation</th>
+            <th>inside_pen_box</th>
+            <th>inside_6_box</th>
+            <th>body_part</th>
+            <th>big_chances</th>
+            <th>on_target</th>
+            <th>xG</th>
+        </tr>
+    </table>
+    <br>
+    <button><a href="#" onclick="exportTableToCSV('table-data.csv')">CSV</a>
+    </button>
+    <button type="reset" onclick="resetSvg()">Reset</button><br><br>
+    <button class="donate"><a class="donate" href="https://saweria.co/freezycoffee" target="_blank">Buy me Coffee☕</a></button>
+    <br><br>
+    <footer>
+        <strong>&copy; Khofi Alfian 2024</strong>
+    </footer>
+
+    <script src='{{url_for("static", filename="script.js")}}'></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.svg-aside {
+  width: 400px;
+  height: 300px;
+  align: center;
+}
+
+.pitch-svg {
+  fill: white;
+  stroke-width: 1;
+  stroke: lightgray;
+}
+
+#pitch .shot-circle {
+  fill: white;
+  stroke-width: 2;
+  stroke: gray;
+}
+
+text {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+
+.table {
+  width : 50%;
+  font-size : 11px;
+}
+td {
+  border : 1px solid black;
+}
+th {
+  border : 1px solid black;
+}
+a {
+  text-decoration : none;
+  color : black;
+}
+
+.container #xG {
+  font-size : 18px;
+}
+
+@media screen and (min-width : 800px) {
+.container {
+  width: 400px;
+  border : 1px solid black;
+  padding : 5px;
+  /* display : inline-block; */
+  margin-left : 420px;
+  margin-top: -318px;
+}}
+
+footer {
+  font-size : 10px;
+  color : rgba(0 0 0 .5);
+}
+
+.donate {
+  background-color : #0275d8;
+  width: 240px;
+  height: 50px;
+  border-radius: 10px;
+  font-size : 18px;
+  font-weight: bold;
+  color : white;
+  border: none;
+}
