@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request, url_for
 import requests
 import json
 
@@ -22,6 +22,9 @@ def hello():
     response_json = response.json()
     return json.dumps(response_json, indent=4)
 
+@app.route("/favicon.ico")
+def favicon():
+    return url_for('static',filename='clipboard.png')
 
 if __name__ == "__main__":
     app.run()
