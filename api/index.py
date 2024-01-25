@@ -21,6 +21,3 @@ def hello():
     response = requests.post(url, headers=headers, json=data)
     response_json = response.json()
     return json.dumps(response_json, indent=4)
-
-if __name__ == "__main__":
-    app.run()
